@@ -1,22 +1,397 @@
+:root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --text: #f3f3f3;
+    --muted: #9c9c9c;
+    --border: #292929;
+    --accent: #ffffff;
+
+    --max-width: 1280px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    background: #111;
-    color: white;
-    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ------------------------------
+   GLOBAL LAYOUT
+------------------------------ */
+
+.container {
+    width: min(92%, var(--max-width));
+    margin: 0 auto;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+.section-subtitle {
+    margin-top: 10px;
+    color: var(--muted);
+    max-width: 650px;
+}
+
+
+/* ------------------------------
+   HEADER
+------------------------------ */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+    background: rgba(13, 13, 13, 0.88);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    height: 72px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text);
+}
+
+
+/* ------------------------------
+   HERO
+------------------------------ */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 140px 0 80px;
+}
+
+.hero-content {
+    width: 100%;
+}
+
+.hero-eyebrow {
+    margin-bottom: 16px;
+
+    color: var(--muted);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.hero-title {
+    margin: 0;
+
+    font-size: clamp(4rem, 11vw, 10rem);
+    line-height: 0.88;
+    letter-spacing: -0.07em;
+    font-weight: 600;
+}
+
+.hero-footer {
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    color: var(--muted);
+}
+
+.hero-description {
+    max-width: 500px;
+}
+
+
+/* ------------------------------
+   VIDEO
+------------------------------ */
+
+.video-wrapper {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: #000;
+    border-radius: 4px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* ------------------------------
+   PORTFOLIO GRID
+------------------------------ */
+
+.portfolio-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 24px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.project-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.project-type {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+
+/* ------------------------------
+   PHOTOGRAPHY
+------------------------------ */
+
+.photo-grid {
+    columns: 3;
+    column-gap: 18px;
+}
+
+.photo-item {
+    margin-bottom: 18px;
+    break-inside: avoid;
+}
+
+.photo-item img {
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.photo-item img:hover {
+    transform: scale(1.01);
+    opacity: 0.92;
+}
+
+@media (max-width: 900px) {
+    .photo-grid {
+        columns: 2;
+    }
+}
+
+@media (max-width: 550px) {
+    .photo-grid {
+        columns: 1;
+    }
+}
+
+
+/* ------------------------------
+   BUTTONS / LINKS
+------------------------------ */
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 35px;
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.text-link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+}
+
+.text-link:hover::after {
+    transform: translateX(5px);
+}
+
+
+/* ------------------------------
+   ABOUT
+------------------------------ */
+
+.about-layout {
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+}
+
+.about-copy {
+    font-size: clamp(1.25rem, 2.3vw, 2rem);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+}
+
+.contact-list {
+    margin-top: 50px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: 100vh;
+    gap: 12px;
 }
 
-h1 {
-    font-size: 64px;
-    margin-bottom: 10px;
+.contact-list a {
+    color: var(--muted);
 }
 
-p {
-    font-size: 24px;
+.contact-list a:hover {
+    color: var(--text);
+}
+
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+
+footer {
+    padding: 40px 0;
+
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    font-size: 0.9rem;
+}
+
+
+/* ------------------------------
+   MOBILE
+------------------------------ */
+
+@media (max-width: 800px) {
+
+    .hero {
+        min-height: 85vh;
+    }
+
+    .hero-footer {
+        flex-direction: column;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .nav {
+        height: 64px;
+    }
+
+    .nav-links {
+        gap: 16px;
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: clamp(3.8rem, 18vw, 6rem);
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
 }
