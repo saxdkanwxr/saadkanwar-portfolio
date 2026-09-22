@@ -230,6 +230,10 @@ img {
     gap: 50px 24px;
 }
 
+.portfolio-page {
+    padding-top: 160px;
+}
+
 .project {
     display: flex;
     flex-direction: column;
@@ -293,25 +297,10 @@ img {
     opacity: 0.92;
 }
 
-@media (max-width: 900px) {
-    .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.photo-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 7px;
-}
-
 
 /* ------------------------------
    PHOTO LIGHTBOX
 ------------------------------ */
-
-.photo-item img {
-    cursor: pointer;
-}
 
 .lightbox {
     position: fixed;
@@ -898,6 +887,10 @@ footer {
     .project-type {
         font-size: 0.8rem;
     }
+
+    .portfolio-page {
+    padding-top: 105px;
+}
 
 
     /* PHOTOGRAPHY */
